@@ -4,8 +4,6 @@ This repository contains a SvelteKit project that utilizes a Web API to fetch em
 
 ## View Project Live on: https://sveltekit-emoji-project.vercel.app/
 
-## Minimum Requirements (Entry-level)
-
 To run this project locally, ensure that you have the following minimum requirements installed on your machine:
 
 1. Node.js (LTS version or higher)
