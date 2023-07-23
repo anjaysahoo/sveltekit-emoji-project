@@ -1,4 +1,4 @@
-# SvelteKit Emoji Project - Readme
+# Emoji Project
 
 This repository contains a SvelteKit project that utilizes a Web API to fetch emoji details and displays them on a web page. The project fulfills the minimum requirements of displaying emojis in a card layout with response parameters such as name, category, group, and HTML code. Additionally, the design is responsive for mobile, tablet, and desktop views.
 
