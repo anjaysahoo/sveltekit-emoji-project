@@ -28,6 +28,7 @@
 
     // Update the displayed items based on the selected page
     const updateDisplayedItems = () => {
+        totalPages = Math.ceil(paginatedEmojiItems.length / itemsPerPage);
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         emojiItems = paginatedEmojiItems.slice(startIndex, endIndex);
@@ -70,84 +71,87 @@
 
 
 <!----------------------------- HTML ----------------------------->
-<div class="filter">
-    <button class="filter__box" on:click={() => updateEmojiList('smileys and people')}>
+<main>
+    <div class="filter">
+        <button class="filter__box" on:click={() => updateEmojiList('smileys and people')}>
             smileys and people
-    </button>
-    <button class="filter__box" on:click={() => updateEmojiList('flags')}>
-        flags
-    </button>
-    <button class="filter__box" on:click={() => updateEmojiList('symbols')}>
-        symbols
-    </button>
-    <button class="filter__box" on:click={() => updateEmojiList('objects')}>
-        objects
-    </button>
-    <button class="filter__box" on:click={() => updateEmojiList('activities')}>
-        activities
-    </button>
-    <button class="filter__box" on:click={() => updateEmojiList('travel and places')}>
-        travel and places
-    </button>
-    <button class="filter__box" on:click={() => updateEmojiList('food and drink')}>
-        food and drink
-    </button>
-    <button class="filter__box" on:click={() => updateEmojiList('animals and nature')}>
-        animals and nature
-    </button>
-</div>
-<section>
-{#each emojiItems as item}
-        <div class="card">
-            <div class="card__emoji">
-                {@html item.htmlCode[0]}
-            </div>
-            <div class="card-box card__category">
-                <div class="card-box__head card__category__head">
-                    Category
-                </div>
-                <div class="card-box__body card__category__body">
-                    {item.category}
-                </div>
-            </div>
-            <div class="card-box card__group">
-                <div class="card-box__head card__group__head">
-                    Group
-                </div>
-                <div class="card-box__body card__group__body">
-                    {item.group}
-                </div>
-            </div>
-            <div class="card-box card__name">
-                <div class="card-box__head card__name__head">
-                    Name
-                </div>
-                <div class="card-box__body card__name__body">
-                    {item.name}
-                </div>
-            </div>
-            <div class="card-box card__unicode">
-                <div class="card-box__head card__unicode__head">
-                    Unicode
-                </div>
-                <div class="card-box__body card__unicode__body">
-                    {item.unicode[0]}
-                </div>
-            </div>
-        </div>
-{/each}
-</section>
+        </button>
+        <button class="filter__box" on:click={() => updateEmojiList('flags')}>
+            flags
+        </button>
+        <button class="filter__box" on:click={() => updateEmojiList('symbols')}>
+            symbols
+        </button>
+        <button class="filter__box" on:click={() => updateEmojiList('objects')}>
+            objects
+        </button>
+        <button class="filter__box" on:click={() => updateEmojiList('activities')}>
+            activities
+        </button>
+        <button class="filter__box" on:click={() => updateEmojiList('travel and places')}>
+            travel and places
+        </button>
+        <button class="filter__box" on:click={() => updateEmojiList('food and drink')}>
+            food and drink
+        </button>
+        <button class="filter__box" on:click={() => updateEmojiList('animals and nature')}>
+            animals and nature
+        </button>
+    </div>
 
-<!-- Add the pagination buttons -->
-<div class="pagination">
-    <button on:click={goToPreviousPage} disabled={currentPage === 1}>
-        <Icon d={leftArrow}/>
-    </button>
-    <span>Page {currentPage} of {totalPages}</span>
-    <button on:click={goToNextPage} disabled={currentPage === totalPages}>
-        <Icon d={rightArrow}/>
-    </button>
-</div>
+    <section>
+        {#each emojiItems as item}
+            <div class="card">
+                <div class="card__emoji">
+                    {@html item.htmlCode[0]}
+                </div>
+                <div class="card-box card__category">
+                    <div class="card-box__head card__category__head">
+                        Category
+                    </div>
+                    <div class="card-box__body card__category__body">
+                        {item.category}
+                    </div>
+                </div>
+                <div class="card-box card__group">
+                    <div class="card-box__head card__group__head">
+                        Group
+                    </div>
+                    <div class="card-box__body card__group__body">
+                        {item.group}
+                    </div>
+                </div>
+                <div class="card-box card__name">
+                    <div class="card-box__head card__name__head">
+                        Name
+                    </div>
+                    <div class="card-box__body card__name__body">
+                        {item.name}
+                    </div>
+                </div>
+                <div class="card-box card__unicode">
+                    <div class="card-box__head card__unicode__head">
+                        Unicode
+                    </div>
+                    <div class="card-box__body card__unicode__body">
+                        {item.unicode[0]}
+                    </div>
+                </div>
+            </div>
+        {/each}
+    </section>
+
+    <div class="pagination">
+        <button on:click={goToPreviousPage} disabled={currentPage === 1}>
+            <Icon d={leftArrow}/>
+        </button>
+        <span>Page {currentPage} of {totalPages}</span>
+        <button on:click={goToNextPage} disabled={currentPage === totalPages}>
+            <Icon d={rightArrow}/>
+        </button>
+    </div>
+
+</main>
 
 
 <!---------------------------------------------------------------->
@@ -155,6 +159,7 @@
 
 <!----------------------------- STYLE ----------------------------->
 <style>
+
     button{
         all: unset;
     }
@@ -253,6 +258,12 @@
         border-radius: 10px;
         font-weight: bold;
         cursor: pointer;
+    }
+
+    @media screen and (max-width: 359px){
+        main{
+            width: fit-content;
+        }
     }
 </style>
 <!----------------------------------------------------------------->

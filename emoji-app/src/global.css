@@ -67,10 +67,24 @@ button[disabled] {
 select{
     border-radius: 5px;
     background: #0a1217;
-    color: var(--text);
+    color: white;
     padding: 0.5rem;
 }
 
-select option:hover{
-    border: 2px solid var(--primary);
+
+
+::-webkit-scrollbar {
+    width: 0.45rem;
+    height: 0.45rem;
+    background-color: transparent;
+
+}
+
+::-webkit-scrollbar-track {
+    background-color: #14282e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #32F9FF;
+    border-radius: 100vw;
 }
