@@ -260,7 +260,7 @@
         cursor: pointer;
     }
 
-    @media screen and (max-width: 359px){
+    @media screen and (max-width: 460px){
         main{
             width: fit-content;
         }
